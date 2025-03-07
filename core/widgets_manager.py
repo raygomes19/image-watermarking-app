@@ -154,7 +154,7 @@ class WidgetsManager:
         self.font_color_code.config(text=str(color))
         self.font_color_box.config(bg=str(color))
 
-    def on_text_change(self):
+    def on_text_change(self, name, index, mode):
         self.draggable_text.set_text(self.text.get())
 
     def on_drag_start(self, event):

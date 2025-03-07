@@ -17,8 +17,8 @@ class WatermarkApplication:
         self.config_menu()
         self.setup_widgets()
 
-        # Test code
-        self.root.after(1000, self.upload_file, True)
+        # Run the app
+        self.frame_select_file()
 
         # Run window
         self.root.mainloop()
@@ -118,7 +118,6 @@ class WatermarkApplication:
             self.frame_select_file()
             return
 
-        print(f"Selected File: {file_path}")
         try:
             self.original_image = Image.open(file_path)
         except IOError:
@@ -145,6 +144,8 @@ class WatermarkApplication:
 
     def save(self):
         if not self.original_image:
+            messagebox.showinfo("Error", message=f"Please select a file first")
+            self.frame_select_file()
             return
 
         file_path = filedialog.asksaveasfilename(defaultextension=".png",
@@ -168,7 +169,6 @@ class WatermarkApplication:
             watermarked = Image.alpha_composite(self.original_image.convert("RGBA"), watermark)
             watermarked.convert("RGB").save(file_path, "PNG")
 
-            print(f"Saved image size: {watermarked.size}")
             print(f"Image saved as {file_path}")
 
     def update_watermark(self, event=None):
