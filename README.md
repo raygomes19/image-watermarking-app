@@ -6,7 +6,7 @@ The **Image Watermarking Desktop App** is a Python-based application that allows
 ## Features
 - Load images from local storage
 - Add text based watermarks
-- Adjust watermark position, opacity, and size
+- Adjust watermark position (using drag and drop), opacity, and size
 - Save watermarked images in various formats
 
 ## Technologies Used
